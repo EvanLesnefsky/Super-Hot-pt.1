@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TimeManager : MonoBehaviour
+{
+    public Transform rightHandReference;
+    public float minSpeed = 0.2f;
+    public float maxSpeed = 2.0f;
+    public float movementThreshold = 0.001f;
+
+    private Vector3 previous;
+
+    void Start()
+    {
+        if (rightHandReference != null)
+        {
+            previous = rightHandReference.position;
+        }
+    }
+
+    void Update()
+    {
+        if (rightHandReference != null)
+        {
+            float travel = Vector3.Distance(rightHandReference.position, previous);
+            previous = rightHandReference.position;
+            if (travel > movementThreshold)
+            {
+                Time.timeScale = maxSpeed;
+            }
+            else
+            {
+                Time.timeScale = minSpeed;
+            }
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
+    }
+}
