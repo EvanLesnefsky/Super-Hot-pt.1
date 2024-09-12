@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeChange : MonoBehaviour
 {
-    public Transform rightHandReference;
+    public Transform leftHandReference;
     public float minSpeed = 0.2f;
-    public float maxSpeed = 2.0f;
+    public float maxSpeed = 1.0f;
     public float movementThreshold = 0.001f;
 
     private Vector3 previous;
 
     void Start()
     {
-        if (rightHandReference != null)
+        if (leftHandReference != null)
         {
-            previous = rightHandReference.position;
+            previous = leftHandReference.position;
         }
     }
 
     void Update()
     {
-        if (rightHandReference != null)
+        if (leftHandReference != null)
         {
-            float travel = Vector3.Distance(rightHandReference.position, previous);
-            previous = rightHandReference.position;
+            float travel = Vector3.Distance(leftHandReference.position, previous);
+            previous = leftHandReference.position;
             if (travel > movementThreshold)
             {
                 Time.timeScale = maxSpeed;
