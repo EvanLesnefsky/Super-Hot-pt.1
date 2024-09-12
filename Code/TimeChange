@@ -8,7 +8,6 @@ public class TimeChange : MonoBehaviour
     public float minSpeed = 0.2f;
     public float maxSpeed = 1.0f;
     public float movementThreshold = 0.001f;
-
     private Vector3 previous;
 
     void Start()
